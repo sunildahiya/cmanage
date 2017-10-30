@@ -7,9 +7,9 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       abi = JSON.parse(this.responseText);
-      VotingContract = web3.eth.contract(abi);
+      TransactionContract = web3.eth.contract(abi);
       // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
-      contractInstance = VotingContract.at('0x4758bcabb3985a59cce407540969749485b5229d');
+      contractInstance = TransactionContract.at('0x4758bcabb3985a59cce407540969749485b5229d');
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
