@@ -4,7 +4,6 @@ pragma solidity ^0.4.11;
 contract Transaction {
   
   mapping (bytes32 => uint8) public candidateCredit;
-  mapping (bytes32 => uint8) public candidateDebt;
   
   bytes32[] public candidateList;
   function Transaction(bytes32[] candidateNames) {
@@ -15,16 +14,8 @@ contract Transaction {
     return candidateCredit[candidate];
   }
 
-  function getDebt(bytes32 candidate) returns (uint8) {
-      return candidateDebt[candidate];
-  }
   function sendMoney(bytes32 candidate, uint8 money) {
-    if (candidateDebt[candidate] > money) {
-      candidateDebt[candidate] -= money;
-    } else {
-      candidateCredit[candidate] += money-candidateDebt[candidate];
-      candidateDebt[candidate] = 0;
-    }
+      candidateCredit[candidate] += money;
   }
 
 }

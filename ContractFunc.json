@@ -18,24 +18,6 @@
         "type":"function"
     },
     {
-        "constant":true,
-        "inputs":[
-                    {
-                        "name":"candidate",
-                        "type":"bytes32"
-                    }
-                ],
-        "name":"getDebt",
-        "outputs":[
-                     {
-                         "name":"",
-                         "type":"uint8"
-                         }
-                ],
-        "payable":false,
-        "type":"function"
-    },
-    {
         "constant":false,
         "inputs":[
                     {
@@ -79,24 +61,6 @@
                     }
                 ],
         "name":"candidateCredit",
-        "outputs":[
-                    {
-                        "name":"",
-                        "type":"uint8"
-                    }
-                ],
-        "payable":false,
-        "type":"function"
-    },
-    {
-        "constant":true,
-        "inputs":[
-                    {
-                        "name":"",
-                        "type":"bytes32"
-                    }
-                ],
-        "name":"candidateDebt",
         "outputs":[
                     {
                         "name":"",

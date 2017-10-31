@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello World DApp</title>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <title>C&#8377edit</title>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'> -->
+  
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
   <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script> -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
   <script src="./js/index.js"></script>
 </head>
+
+<style>
+  .container {
+    position: relative;
+    top: 200px;
+  }
+</style>
+
 <body class="container">
-  <h1>
-  <h1>Account Information</h1>
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Candidate</th>
-          <th>Credit</th>
-          <th>Debt</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Pankaj</td>
-          <td id="credit-1"></td>
-          <td id="debt-1"></td>
-        </tr>
-        <tr>
-          <td>Sandip</td>
-          <td id="credit-2"></td>
-          <td id="debt-2"></td>
-        </tr>
-        <tr>
-          <td>Hemant</td>
-          <td id="credit-3"></td>
-          <td id="debt-3"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <input type="text" id="money"/> To <input type="text" id="candidate"/>
-  <a href="#" onclick="sendMoney(50)" class="btn btn-primary">Send</a>
+    <div class="row">
+        <div class="col s5">
+            Name <input type="text" id="candidate"/> Amount <br> <input type="number" id="money"/> <br><br>
+            <a href="#" onclick="sendMoney(document.getElementById('money').value)" class="btn btn-primary">Send</a>        
+          </div>
+      
+        <div class="col s2"></div>
+          <div class="col s5">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">account_balance</i>Net Balance</div>
+                  <div class="collapsible-body">
+                    <span id="balance"></span>
+                </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">swap_horiz</i>Lend To</div>
+                  <div class="collapsible-body"><span>
+                      <div class="table-responsive">
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <td>Pankaj</td>
+                                <td id="credit-1"></td>
+                              </tr>
+                              <tr>
+                                <td>Sandip</td>
+                                <td id="credit-2"></td>
+                              </tr>
+                              <tr>
+                                <td>Hemant</td>
+                                <td id="credit-3"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </span>
+                </div>
+                </li>
+                <!-- <li>
+                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Transaction</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                  </li>   -->
+              </ul>
+          </div>
+      </div>  
 </body>
+
 </html>

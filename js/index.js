@@ -9,7 +9,7 @@ xmlhttp.onreadystatechange = function() {
       abi = JSON.parse(this.responseText);
       TransactionContract = web3.eth.contract(abi);
       // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
-      contractInstance = TransactionContract.at('0x4758bcabb3985a59cce407540969749485b5229d');
+      contractInstance = TransactionContract.at('0x015387857b0d841c118a764940deef8d1338594e');
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
@@ -17,15 +17,21 @@ xmlhttp.onreadystatechange = function() {
 
 // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
 candidatesCredit = {"Pankaj": "credit-1", "Sandip": "credit-2", "Hemant": "credit-3"}
-candidatesDebt = {"Pankaj": "debt-1", "Sandip": "debt-2", "Hemant": "debt-3"}
 
 function sendMoney(money) {
   candidateName = $("#candidate").val();
   contractInstance.sendMoney(candidateName, money, {from: web3.eth.accounts[0]}, function() {
     let div_id = candidatesCredit[candidateName];
     $("#" + div_id).html(contractInstance.getCredit.call(candidateName).toString());
-    div_id = candidatesDebt[candidateName];
-    $("#" + div_id).html(contractInstance.getDebt.call(candidateName).toString());
+    // let balance = contractInstance.getCredit.call(candidateName);
+    // $("#" + "balance").html(balance.toString());
+    var balance = 0;
+    candidateNames = Object.keys(candidatesCredit);
+    for (var i=0; i<candidateNames.length; i++){
+      var name = candidateNames[i];
+      balance = balance + parseInt(contractInstance.getCredit.call(name).toString());
+    }
+    $("#" + "balance").html(balance.toString());
   });
 }
 
@@ -34,9 +40,7 @@ $(document).ready(function() {
   for (var i = 0; i < candidateNames.length; i++) {
     let name = candidateNames[i];
     let valCredit = contractInstance.getCredit.call(name).toString()
-    let valDebt = contractInstance.getDebt.call(name).toString()
     $("#" + candidatesCredit[name]).html(valCredit);
-    $("#" + candidatesDebt[name]).html(valDebt);
   }
 });
 
