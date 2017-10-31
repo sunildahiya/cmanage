@@ -9,7 +9,7 @@ xmlhttp.onreadystatechange = function() {
       abi = JSON.parse(this.responseText);
       TransactionContract = web3.eth.contract(abi);
       // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
-      contractInstance = TransactionContract.at('0x71a240b23f0a867d10d7022fc8591cfb91e786bc');
+      contractInstance = TransactionContract.at('0x4758bcabb3985a59cce407540969749485b5229d');
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
