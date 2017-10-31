@@ -39,7 +39,7 @@
       </tbody>
     </table>
   </div>
-  <input type="text" id="money"/> To <input type="text" id="candidate"/>
-  <a href="#" onclick="sendMoney(50)" class="btn btn-primary">Send</a>
+  <input type="number" id="money"/> To <input type="text" id="candidate"/>
+  <a href="#" onclick="sendMoney(document.getElementById('money').value)" class="btn btn-primary">Send</a>
 </body>
 </html>
