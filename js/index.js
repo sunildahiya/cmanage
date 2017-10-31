@@ -1,5 +1,3 @@
-
-
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
 var contractInstance;
@@ -9,7 +7,7 @@ xmlhttp.onreadystatechange = function() {
       abi = JSON.parse(this.responseText);
       TransactionContract = web3.eth.contract(abi);
       // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
-      contractInstance = TransactionContract.at('0x015387857b0d841c118a764940deef8d1338594e');
+      contractInstance = TransactionContract.at('0x9258d9c2951b99d73cb5c6ba2b7507823dea2268');
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
@@ -23,8 +21,6 @@ function sendMoney(money) {
   contractInstance.sendMoney(candidateName, money, {from: web3.eth.accounts[0]}, function() {
     let div_id = candidatesCredit[candidateName];
     $("#" + div_id).html(contractInstance.getCredit.call(candidateName).toString());
-    // let balance = contractInstance.getCredit.call(candidateName);
-    // $("#" + "balance").html(balance.toString());
     var balance = 0;
     candidateNames = Object.keys(candidatesCredit);
     for (var i=0; i<candidateNames.length; i++){
@@ -32,6 +28,8 @@ function sendMoney(money) {
       balance = balance + parseInt(contractInstance.getCredit.call(name).toString());
     }
     $("#" + "balance").html(balance.toString());
+    $("#" + "money").val(0);
+    $("#" + "candidate").val("")
   });
 }
 
