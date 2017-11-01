@@ -11,7 +11,7 @@
         "outputs":[
                         {
                             "name":"",
-                            "type":"uint8"
+                            "type":"uint32"
                         }
                 ],
         "payable":false,
@@ -26,7 +26,7 @@
                     },
                     {
                         "name":"money",
-                        "type":"uint8"
+                        "type":"uint32"
                     }
                 ],
         "name":"sendMoney",
@@ -64,7 +64,7 @@
         "outputs":[
                     {
                         "name":"",
-                        "type":"uint8"
+                        "type":"uint32"
                     }
                 ],
         "payable":false,
