@@ -1,29 +1,33 @@
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
 var contractInstance;
+var contractAddress='0xb6b6de93b8df61c9eec356bbaeb7dd0a847216fc';
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    contractAddress = this.responseText;
+    contractInstance = TransactionContract.at(contractAddress);
+  }
+};
+xhttp.open("GET", "address.txt", true);
+xhttp.send();
+
+
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       abi = JSON.parse(this.responseText);
       TransactionContract = web3.eth.contract(abi);
-      receiveAddress(TransactionContract);
+      // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
+      contractInstance = TransactionContract.at(contractAddress);
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
   // xmlhttp.open("GET", "address.txt", true);
   xmlhttp.send();
 
-function receiveAddress(TransactionContract) {
-  var xmlhttp2 = new XMLHttpRequest();
-  xmlhttp2.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        contractInstance = TransactionContract.at(this.responseText);
-      }
-    };
-    xmlhttp2.open("GET", "address.txt", true);
-    xmlhttp2.send();
-}
-
+    
 // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
 candidatesCredit = {"Pankaj": "credit-1", "Sandip": "credit-2", "Hemant": "credit-3"}
 
@@ -39,9 +43,10 @@ function sendMoney(money) {
       balance = balance + parseInt(contractInstance.getCredit.call(name).toString());
     }
     $("#" + "balance").html(balance.toString());
-    $("#" + "money").val(0);
+    $("#" + "money").val("");
     $("#" + "candidate").val("")
   });
+ 
 }
 
 $(document).ready(function() {
@@ -53,3 +58,13 @@ $(document).ready(function() {
   }
 });
 
+    
+$(function() {
+  $('input.autocomplete').autocomplete({
+    data: {
+      "Pankaj":'http://placehold.it/250x250',
+      "Sandip": 'http://placehold.it/250x250',
+      "Hemant": 'http://placehold.it/250x250',
+    }
+  });
+});
