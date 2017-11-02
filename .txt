@@ -1,0 +1,30 @@
+commit c5235f9cf5658f11502caea7bfb02fe53ec4e299
+tree e175db1b494019375f8920ebd32a88cb7027b233
+parent 0f8e39352a86108a0cb9e7f7f1615fd9c2794e33
+author pankaj <teamroboconiitr@gmail.com> 1509558823 +0530
+committer pankaj <teamroboconiitr@gmail.com> 1509558823 +0530
+
+    terminal file added
+
+diff --git a/filename.txt b/filename.txt
+index 1177ae8..f26caa1 100644
+--- a/filename.txt
++++ b/filename.txt
+@@ -1 +1 @@
+-0xe0b29dfee4150c080830dcc53d0310bea4695b85
+\ No newline at end of file
++0x2702b43f62d3adfb464733c4bcd510752a6afaac
+\ No newline at end of file
+diff --git a/js/index.js b/js/index.js
+index bfab0d7..5744418 100644
+--- a/js/index.js
++++ b/js/index.js
+@@ -7,7 +7,7 @@ xmlhttp.onreadystatechange = function() {
+       abi = JSON.parse(this.responseText);
+       TransactionContract = web3.eth.contract(abi);
+       // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
+-      contractInstance = TransactionContract.at('0x855ed297fe36ead9561dfb0063cc6b158a78f89f'');
++      contractInstance = TransactionContract.at('0x2702b43f62d3adfb464733c4bcd510752a6afaac');
+     }
+   };
+   xmlhttp.open("GET", "ContractFunc.json", true);
