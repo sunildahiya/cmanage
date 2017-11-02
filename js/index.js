@@ -24,6 +24,7 @@ xmlhttp.onreadystatechange = function() {
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
+  // xmlhttp.open("GET", "address.txt", true);
   xmlhttp.send();
 
     
