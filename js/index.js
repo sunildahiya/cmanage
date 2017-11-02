@@ -6,12 +6,23 @@ xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       abi = JSON.parse(this.responseText);
       TransactionContract = web3.eth.contract(abi);
-      // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
-      contractInstance = TransactionContract.at('0x2702b43f62d3adfb464733c4bcd510752a6afaac');
+      receiveAddress(TransactionContract);
     }
   };
   xmlhttp.open("GET", "ContractFunc.json", true);
+  // xmlhttp.open("GET", "address.txt", true);
   xmlhttp.send();
+
+function receiveAddress(TransactionContract) {
+  var xmlhttp2 = new XMLHttpRequest();
+  xmlhttp2.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        contractInstance = TransactionContract.at(this.responseText);
+      }
+    };
+    xmlhttp2.open("GET", "address.txt", true);
+    xmlhttp2.send();
+}
 
 // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
 candidatesCredit = {"Pankaj": "credit-1", "Sandip": "credit-2", "Hemant": "credit-3"}

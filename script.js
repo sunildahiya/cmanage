@@ -14,7 +14,7 @@ deployedContract = TransactionContract.new(['Pankaj','Sandip','Hemant'],{data: b
 function myFunc()
  {
     console.log(deployedContract.address);
-    var out=fs.createWriteStream('filename.txt',{encoding:'utf8'} );
+    var out=fs.createWriteStream('address.txt',{encoding:'utf8'} );
     out.write(deployedContract.address);
     out.end()
  }
